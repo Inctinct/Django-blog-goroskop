@@ -1,0 +1,16 @@
+{% extends 'goroskop/layout.html' %}
+
+
+{% block content %}
+   {% for post in goros %}
+       <div class="post">
+            <div class="date">
+                {{ post.date }}
+            </div>
+        <p>{{ post.text|linebreaksbr }}</p>
+       </div>
+
+   {% endfor %}
+
+
+{% endblock %}

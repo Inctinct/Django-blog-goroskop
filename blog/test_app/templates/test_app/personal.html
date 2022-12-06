@@ -1,0 +1,13 @@
+{% extends 'test_app/base.html' %}
+
+{% block content %}
+
+
+<p>У вас {{ count }} комментария(ев)</p>
+ {% for comment in comments %}
+            Пост - {{ comment.post }}<br>
+            {{ comment.body }}<br>
+            Добавлен - {{ comment.created }} <br><br>
+        {% endfor %}
+
+{% endblock %}

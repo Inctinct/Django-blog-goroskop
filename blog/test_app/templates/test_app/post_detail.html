@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+{% extends 'test_app/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+        <p>{{ post.author }}</p>
+        <a href="{% url 'news_delete' pk=post.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'news_update' pk=post.pk %}" class="btn btn-info">Update</a><br><br><br>
+        <h1>Comments: {{ count }}</h1><br><br>
+        {% for comment in comments %}
+            Пользователь - {{ comment.author }}<br>
+            {{ comment.body }}<br>
+            Добавлен - {{ comment.created }} <br><br>
+        {% endfor %}
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'test_app/base.html' %}
+
+
+{% block content %}
+
+
+    {% for post in posts %}
+        <div>
+                <h1><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h1>
+                <p>published: {{ post.published_date }}</p>
+                <p>{{ post.text|linebreaksbr }}</p>
+                <p>author: {{ post.author }}</p>
+
+
+                <a href="{% url 'post_comment' post.pk %}">Comment</a><br><br>
+        </div>
+    {% endfor %}
+{% endblock %}

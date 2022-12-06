@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>BLOG</title>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    </head>
+<body>
+    <header>
+    <div class="page-header">
+        <h1><a href="/">Gachi BLOG</a></h1>
+
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'create' %}">Add post</a><br><br>
+             {% if user.is_authenticated %}
+            <p align="right">Hi' {{ user.username }}!</p>
+            <p align="right"><a href="{% url 'personal' %}">Personal</a></p>
+            <p align="right"><a href="{% url 'logout' %}">Log out</a></p>
+             <p align="right"> <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'goroskop' %}">Goroskop</a></p><br>
+            {% else %}
+        <p align="right"><a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'signup' %}">SignUp</a><br></p>
+            <p align="right"><a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'login' %}">Login</a></p>
+    {% endif %}
+      </nav>
+    </div>
+    </header>
+
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
